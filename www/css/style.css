@@ -1,0 +1,78 @@
+/* Empty. Add your own CSS if you like */
+
+/* extracted from http://stackoverflow.com/questions/26215355/creating-a-table-in-ionic*/
+.header1 {
+    background-color: #EF473A;
+    width: 40%;
+    border: solid 1px white;
+    border-bottom-style: none;
+    border-right-style: none;
+    height: 40px;
+    border-radius: 2px;
+    text-align: center;
+    color: grey;
+
+}
+
+.header2 {
+    background-color: #387EF5;
+    width: 40%;
+    border: solid 1px white;
+    border-bottom-style: none;
+    border-right-style: none;
+    height: 40px;
+    border-radius: 2px;
+    text-align: center;
+    color: grey;
+
+}
+
+
+.cl {
+    border: solid 1px #D4D4D4;
+    border-bottom-style: none;
+    border-right-style: none;
+    width: 12%;
+    height: 40px;
+    border-radius: 2px;
+    text-align: center;
+    
+}
+
+.cl:last-child {
+    border-right: solid 1px #D4D4D4;
+}
+
+.row:last-child .cl {
+    border-bottom: solid 1px #D4D4D4;
+}
+/* from https://www.thepolyglotdeveloper.com/2015/04/adding-background-images-to-ionic-framework-apps/*/
+
+.back {
+    background: url(../img/back.jpg) no-repeat center center fixed;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+        
+      /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.h5red{
+
+    color:#EF473A;
+    font-weight:bold;
+}
+
+.h5blue{
+
+    color:#387EF5;
+    font-weight:bold;
+}
+
+.smoothhead{
+    color:#585151;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.009);
+}
