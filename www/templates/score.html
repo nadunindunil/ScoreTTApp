@@ -4,7 +4,7 @@
     <div class="row">
     	<div class="col col-50">
     		<center><h3 class="smoothhead" on-touch="player1 = onTouch()">{{player1}} <i style="font-size:20px;" class="icon ion-edit"></i></h3></center>
-    		<div class="card" on-swipe-up="score1 = onSwipeUp(score1)" on-swipe-down="score1 = onSwipeDown(score1)">
+    		<div class="card" on-swipe-up="score1 = onSwipeUp1(score1);" on-swipe-down="score1 = onSwipeDown1(score1)" >
 			  <div class="item item-text-wrap" style="background-color:#EF473A;">
 			    <center><h1 style="font-size:100px;color:#ffffff;">{{score1}}</h1></center>
 			  </div>
@@ -12,7 +12,7 @@
     	</div>
     	<div class="col col-50">
     		<center><h3 class="smoothhead" on-touch="player2 = onTouch()"> {{player2}} <i style="font-size:20px;" class="icon ion-edit"></i></h3></center>
-    		<div class="card" on-swipe-up="score2 = onSwipeUp(score2)" on-swipe-down="score2 = onSwipeDown(score2)">
+    		<div class="card" on-swipe-up="score2 = onSwipeUp2(score2);" on-swipe-down="score2 = onSwipeDown2(score2);">
 			  <div class="item item-text-wrap" style="background-color:#387EF5;">
 			    <center><h1 style="font-size:100px;color:#ffffff;">{{score2}}</h1></center>
 			  </div>
@@ -25,15 +25,15 @@
 
     	<div class="row">
           <div class="header1"><h5 style="color:#ffffff;font-weight:bold;">{{player1}}</h5></div>
-          <div class="cl"><h5 class="h5red">1</h5></div>
+          <div on-Touch="set1player1 = score1; set1player2 = score2;" class="cl"><h5 class="h5red">{{set1player1}}</h5></div>
           <div class="cl"><h5 class="h5red">2</h5></div>
           <div class="cl"><h5 class="h5red">3</h5></div>
           <div class="cl"><h5 class="h5red">4</h5></div>
           <div class="cl"><h5 class="h5red">5</h5></div>
         </div>
         <div class="row">
-          <div class="header2"><h5 style="color:#fafafa;font-weight:bold;"> {{player2}}</h5></div>
-          <div class="cl"><h5 class="h5blue">1</h5></div>
+          <div class="header2"><h5 style="color:#fafafa;font-weight:bold;">{{player2}}</h5></div>
+          <div class="cl"><h5 class="h5blue">{{set1player2}}</h5></div>
           <div class="cl"><h5 class="h5blue">2</h5></div>
           <div class="cl"><h5 class="h5blue">3</h5></div>
           <div class="cl"><h5 class="h5blue">4</h5></div>
@@ -43,7 +43,7 @@
 
     <div class="row">
       <div class="col col-50">
-        <button class="button button-block icon ion-archive button-positive">
+        <button ng-click="showPrompt();" class="button button-block icon ion-archive button-positive">
           
         </button>
       </div>
