@@ -25,25 +25,25 @@
 
     	<div class="row">
           <div class="header1"><h5 style="color:#ffffff;font-weight:bold;">{{player1}}</h5></div>
-          <div on-Touch="set1player1 = score1; set1player2 = score2;" class="cl"><h5 class="h5red">{{set1player1}}</h5></div>
-          <div class="cl"><h5 class="h5red">2</h5></div>
-          <div class="cl"><h5 class="h5red">3</h5></div>
-          <div class="cl"><h5 class="h5red">4</h5></div>
-          <div class="cl"><h5 class="h5red">5</h5></div>
+          <div ng-click="changeSet(1);score1 = set1player1; score2 = set1player2;" class="cl"><h5 class="h5red">{{set1player1}}</h5></div>
+          <div ng-click="changeSet(2);score1 = set2player1; score2 = set2player2;" class="cl"><h5 class="h5red">{{set2player1}}</h5></div>
+          <div on-Touch="changeSet(3);score1 = set3player1; score2 = set3player2;" class="cl"><h5 class="h5red">{{set3player1}}</h5></div>
+          <div on-Touch="changeSet(4);score1 = set4player1; score2 = set4player2;" class="cl"><h5 class="h5red">{{set4player1}}</h5></div>
+          <div on-Touch="changeSet(5);score1 = set5player1; score2 = set5player2;" class="cl"><h5 class="h5red">{{set5player1}}</h5></div>
         </div>
         <div class="row">
           <div class="header2"><h5 style="color:#fafafa;font-weight:bold;">{{player2}}</h5></div>
           <div class="cl"><h5 class="h5blue">{{set1player2}}</h5></div>
-          <div class="cl"><h5 class="h5blue">2</h5></div>
-          <div class="cl"><h5 class="h5blue">3</h5></div>
-          <div class="cl"><h5 class="h5blue">4</h5></div>
-          <div class="cl"><h5 class="h5blue">5</h5></div>
+          <div class="cl"><h5 class="h5blue">{{set2player2}}</h5></div>
+          <div class="cl"><h5 class="h5blue">{{set3player2}}</h5></div>
+          <div class="cl"><h5 class="h5blue">{{set4player2}}</h5></div>
+          <div class="cl"><h5 class="h5blue">{{set5player2}}</h5></div>
         </div>
     </div>
 
     <div class="row">
       <div class="col col-50">
-        <button ng-click="showPrompt();" class="button button-block icon ion-archive button-positive">
+        <button ng-click="set = 2" class="button button-block icon ion-archive button-positive">
           
         </button>
       </div>

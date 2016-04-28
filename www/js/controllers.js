@@ -5,8 +5,16 @@ tt.controller('ScoreCtrl', function($scope,$ionicPopup){
   $scope.name = "Nadun";
   $scope.set1player1 = 0;
   $scope.set1player2 = 0;
-  $scope.set = 0;
-   
+  $scope.set2player1 = 0;
+  $scope.set2player2 = 0;
+  $scope.set3player1 = 0;
+  $scope.set3player2 = 0;
+  $scope.set4player1 = 0;
+  $scope.set4player2 = 0;
+  $scope.set5player1 = 0;
+  $scope.set5player2 = 0;
+  $scope.set = 1;
+  
   $scope.score1 = 0;
   $scope.score2 = 0;
   $scope.player1 = "player1";    
@@ -14,31 +22,97 @@ tt.controller('ScoreCtrl', function($scope,$ionicPopup){
   // $scope.set1player1 = $scope.score1;
   // $scope.set1player2 = $scope.score2;
 
-
+  $scope.changeSet = function(val){
+    $scope.set = val;
+    
+  }
 
   $scope.onSwipeUp1 = function(score){
     score += 1;
-
-    $scope.set1player1 = score;
+    console.log($scope.set);
+    if ($scope.set == 1){
+      $scope.set1player1 = score; 
+    }
+    else if ($scope.set == 2){
+      $scope.set2player1 = score;
+    }
+    else if ($scope.set == 3){
+      $scope.set3player1 = score;
+    }
+    else if ($scope.set == 4){
+      $scope.set4player1 = score;
+    }
+    else if ($scope.set == 5){
+      $scope.set5player1 = score;
+    }
     return score;
   };
 
   $scope.onSwipeDown1 = function(score){
     if (score>0){ score -= 1; }
+    if ($scope.set == 1){
+      
     $scope.set1player1 = score;
+    
+    }
+    else if ($scope.set == 2){
+      $scope.set2player1 = score;
+    }
+    else if ($scope.set == 3){
+      $scope.set3player1 = score;
+    }
+    else if ($scope.set == 4){
+      $scope.set4player1 = score;
+    }
+    else if ($scope.set == 5){
+      $scope.set5player1 = score;
+    }
+
     return score;
   };
 
   $scope.onSwipeUp2 = function(score){
     score += 1;
 
+    if ($scope.set == 1){
+      
     $scope.set1player2 = score;
+    
+    }
+    else if ($scope.set == 2){
+      $scope.set2player2 = score;
+    }
+    else if ($scope.set == 3){
+      $scope.set3player2 = score;
+    }
+    else if ($scope.set == 4){
+      $scope.set4player2 = score;
+    }
+    else if ($scope.set == 5){
+      $scope.set5player2 = score;
+    }
     return score;
   };
 
   $scope.onSwipeDown2 = function(score){
     if (score>0){ score -= 1; }
-    $scope.set1player2 = score;
+    if ($scope.set == 1){
+      
+      $scope.set1player2 = score;
+    
+    }
+    else if ($scope.set == 2){
+      $scope.set2player2 = score;
+    }
+    else if ($scope.set == 3){
+      $scope.set3player2 = score;
+    }
+    else if ($scope.set == 4){
+      $scope.set4player2 = score;
+    }
+    else if ($scope.set == 5){
+      $scope.set5player2 = score;
+    }
     return score;
   };
 
