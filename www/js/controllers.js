@@ -1,5 +1,5 @@
 
-tt.controller('ScoreCtrl', function($scope,$ionicPopup){
+tt.controller('ScoreCtrl', function($scope,$ionicPopup,$cordovaSQLite){
 
   
   $scope.name = "Nadun";
@@ -21,6 +21,34 @@ tt.controller('ScoreCtrl', function($scope,$ionicPopup){
   $scope.player2 = "player2";
   // $scope.set1player1 = $scope.score1;
   // $scope.set1player2 = $scope.score2;
+
+  $scope.store = function(p1name,p2name,p1set1,p1set2,p1set3,p1set4,p1set5,p2set1,p2set2,p2set3,p2set4,p2set5){
+    var query1 = "INSERT INTO match (player1, player2) VALUES (?,?)";
+    var query2 = "INSERT INTO player1 (p1name,p1set1,p1set2,p1set3,p1set4,p1set5) VALUES (?,?,?,?,?,?)";
+    var query3 = "INSERT INTO player2 (p2name,p2set1,p2set2,p2set3,p2set4,p2set5) VALUES (?,?,?,?,?,?)";
+
+    $cordovaSQLite.execute(db,query2,[p1name,p1set1,p1set2,p1set3,p1set4,p1set5]).then(function(result){
+      console.log("INSERT ID->"  + p1name);
+    },function(error){
+      console.log(error);
+    
+    });
+
+    $cordovaSQLite.execute(db,query3,[p2name,p2set1,p2set2,p2set3,p2set4,p2set5]).then(function(result){
+      console.log("INSERT ID->"  + p2name);
+    },function(error){
+      console.log(error);
+    
+    });
+
+    $cordovaSQLite.execute(db,query1,[p1name,p2name]).then(function(result){
+      console.log("INSERT3 ID->" + p1name + " " + p2name);
+    },function(error){
+      console.log(error);
+    
+    });
+
+  };
 
   $scope.changeSet = function(val){
     $scope.set = val;
@@ -166,6 +194,30 @@ tt.controller('ScoreCtrl', function($scope,$ionicPopup){
   
 
   
+
+});
+
+tt.controller('StoreCtrl', function($scope, $stateParams,$cordovaSQLite) {
+
+
+  $scope.show = function(pname){
+    var query = "SELECT p1.p1name,p2.p2name FROM match AS M LEFT JOIN player1 AS p1 ON M.player1 = p1.pid LEFT JOIN player2 AS p2 ON M.player2 = p2.pid";
+    $cordovaSQLite.execute(db,query).then(function(result){
+
+      if (result.rows.length > 0 ){
+        console.log("selected -> " + result.rows.item(0).p1name + " " + result.rows.item(0));
+
+      }
+      else{
+        console.log("NO rows!");
+      }
+
+    },function(error){
+      console.log(error);
+    });
+
+
+  };
 
 });
 

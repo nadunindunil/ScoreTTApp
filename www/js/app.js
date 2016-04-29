@@ -1,12 +1,8 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-var tt = angular.module('starter', ['ionic'])
+var db = null;
+var tt = angular.module('starter', ['ionic','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +15,12 @@ var tt = angular.module('starter', ['ionic'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    //db starts from here
+    db = $cordovaSQLite.openDB({name:"tt.db", location:'default'});
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS player1 (pid INTEGER PRIMARY KEY AUTOINCREMENT, p1name TEXT,p1set1 text,p1set2 text,p1set3 text,p1set4 text,p1set5 text)');
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS player2 (pid INTEGER PRIMARY KEY AUTOINCREMENT, p2name TEXT,p2set1 text,p2set2 text,p2set3 text,p2set4 text,p2set5 text)');
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS match (id INTEGER PRIMARY KEY AUTOINCREMENT, player1 INTEGER,player2 INTEGER,FOREIGN KEY(player1) REFERENCES player1(pid),FOREIGN KEY(player2) REFERENCES player2(pid))');
+    
   });
 })
 
@@ -48,7 +50,8 @@ var tt = angular.module('starter', ['ionic'])
       url: '/recent',
       views: {
         'menuContent': {
-          templateUrl: 'templates/recent.html'
+          templateUrl: 'templates/recent.html',
+          controller: 'StoreCtrl'
         }
       }
     })
@@ -84,6 +87,3 @@ var tt = angular.module('starter', ['ionic'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/score');
 });
-
-
-
